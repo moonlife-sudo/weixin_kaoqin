@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.UserinfoMapper">
+    <insert id="insertUserinfo" parameterType="com.njwuqi.rollcall.entity.Userinfo">
+        insert into userinfo(phone,realName,userNumber,role,userName,password,state) values(#{phone},#{realName},#{userNumber},#{role},#{userName},#{password},#{state})
+    </insert>
+    <delete id="delUserinfo" parameterType="java.lang.Long">
+        delete from userinfo where phone = #{phone}
+    </delete>
+    <update id="updateUserinfo" parameterType="com.njwuqi.rollcall.entity.Userinfo">
+        update userinfo set realName=#{realName},userNumber=#{userNumber},role=#{role},userName=#{userName},password=#{password},state=#{state} where phone = #{phone}
+    </update>
+
+    <select id="queryUserinfoByPhone" resultType="com.njwuqi.rollcall.entity.Userinfo">
+        select phone,realName,userNumber,role,userName,password,state,createTime from userinfo where phone = #{phone}
+    </select>
+</mapper>

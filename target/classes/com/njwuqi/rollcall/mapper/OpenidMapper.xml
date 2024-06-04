@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.OpenidMapper">
+    <insert id="insertOpenid" parameterType="com.njwuqi.rollcall.entity.Openid">
+        insert into openid(openid,phone) values(#{openid},#{phone})
+    </insert>
+    <delete id="delOpenid" parameterType="java.lang.String">
+        delete from openid where openid = #{openid}
+    </delete>
+    <update id="updateOpenid" parameterType="com.njwuqi.rollcall.entity.Openid">
+        update openid set phone=#{phone} where openid = #{openid}
+    </update>
+
+    <select id="queryOpenidByOpenid" resultType="com.njwuqi.rollcall.entity.Openid">
+        select openid,phone,createTime from openid where openid = #{openid}
+    </select>
+</mapper>

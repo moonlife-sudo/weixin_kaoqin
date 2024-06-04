@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.RedisStreamMapper">
+    <select id="queryStreamALLOpenid" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Openid">
+      select openid,phone,createTime from openid
+    </select>
+    <select id="queryStreamALLUserinfo" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Userinfo">
+      select phone,realName,userNumber,role,userName,password,state,createTime from userinfo
+    </select>
+    <select id="queryStreamALLCourseinfo" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Courseinfo">
+      select courseNumber,courseName,phone,state,addressName,createTime from courseInfo
+    </select>
+    <select id="queryStreamALLCourseinfoStudent" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Courseinfo2">
+        select distinct courseInfo.courseNumber,courseInfo.courseName,courseInfo.phone,courseInfo.state,courseInfo.addressName,courseInfo.createTime,electiveInfo.phone studentphone from courseInfo
+        inner join electiveInfo
+        on courseInfo.courseNumber = electiveInfo.courseNumber
+        order by courseNumber desc
+    </select>
+    <select id="queryStreamALLRecordinfo" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Recordinfo">
+      select recordNumber,starttime,endtime,state1,state2,modifystate,phone,courseNumber,ruleNumber,rulestarttime,ruleendtime from recordinfo
+    </select>
+    <select id="queryStreamALLStatisticsinfo" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Statisticsinfo">
+      select statisticsNumber,date,courseNumber,totalNumber,attendanceNumber,leaveNumber,lateNumber,absentNumber,earlyNumber,ruleNumber,earlyInfos,leaveInfos,lateInfos,absentInfos from statisticsinfo
+    </select>
+    <select id="queryStreamALLRuleinfo" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Ruleinfo">
+      select ruleNumber,startTime,finalTime,remark,courseNumber,latitude,longitude from ruleInfo
+    </select>
+    <select id="queryStreamALLElectiveinfo" fetchSize="-2147483648" resultSetType="FORWARD_ONLY" resultType="com.njwuqi.rollcall.entity.Electiveinfo">
+      select id,phone,courseNumber from electiveInfo
+    </select>
+</mapper>

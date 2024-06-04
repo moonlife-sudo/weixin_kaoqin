@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.ElectiveinfoMapper">
+    <insert id="insertElectiveinfo" parameterType="com.njwuqi.rollcall.entity.Electiveinfo">
+        insert into electiveInfo(phone,courseNumber) values(#{phone},#{courseNumber})
+    </insert>
+    <delete id="delElectiveinfo" parameterType="java.lang.Long">
+        delete from electiveInfo where id = #{id}
+    </delete>
+    <update id="updateElectiveinfo" parameterType="com.njwuqi.rollcall.entity.Electiveinfo">
+        update electiveInfo set phone=#{phone},courseNumber=#{courseNumber} where id = #{id}
+    </update>
+    <select id="queryElectiveinfoById" resultType="com.njwuqi.rollcall.entity.Electiveinfo">
+        select id,phone,courseNumber from electiveInfo where id = #{id}
+    </select>
+    <select id="queryElectiveinfoByphonecourseNumber" resultType="com.njwuqi.rollcall.entity.Electiveinfo">
+        select id,phone,courseNumber from electiveInfo where phone = #{phone} and courseNumber = #{courseNumber}
+    </select>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.RuleinfoMapper">
+    <insert id="insertRuleinfo" parameterType="com.njwuqi.rollcall.entity.Ruleinfo" useGeneratedKeys="true" keyProperty="ruleNumber">
+        insert into ruleInfo(startTime,finalTime,remark,courseNumber,latitude,longitude) values(#{startTime},#{finalTime},#{remark},#{courseNumber},#{latitude},#{longitude})
+    </insert>
+    <delete id="delRuleinfo" parameterType="java.lang.Long">
+        delete from ruleInfo where ruleNumber = #{ruleNumber}
+    </delete>
+    <update id="updateRuleinfo" parameterType="com.njwuqi.rollcall.entity.Ruleinfo">
+        update ruleInfo set startTime=#{startTime},finalTime=#{finalTime},remark=#{remark},courseNumber=#{courseNumber},latitude=#{latitude},longitude=#{longitude} where ruleNumber = #{ruleNumber}
+    </update>
+    <select id="queryRuleinfoById" resultType="com.njwuqi.rollcall.entity.Ruleinfo">
+        select ruleNumber,startTime,finalTime,remark,courseNumber,latitude,longitude from ruleInfo where ruleNumber = #{ruleNumber}
+    </select>
+</mapper>

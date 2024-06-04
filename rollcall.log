@@ -1,0 +1,80 @@
+2024-06-04 19:24:41,483 INFO - Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-06-04 19:24:41,488 INFO - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-06-04 19:24:41,509 INFO - Finished Spring Data repository scanning in 9 ms. Found 0 Redis repository interfaces.
+2024-06-04 19:24:41,961 INFO - Tomcat initialized with port(s): 8400 (http)
+2024-06-04 19:24:41,969 INFO - Starting service [Tomcat]
+2024-06-04 19:24:41,969 INFO - Starting Servlet engine: [Apache Tomcat/9.0.54]
+2024-06-04 19:24:41,970 INFO - Loaded Apache Tomcat Native library [1.2.38] using APR version [1.7.4].
+2024-06-04 19:24:41,970 INFO - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [true].
+2024-06-04 19:24:41,970 INFO - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2024-06-04 19:24:41,989 INFO - OpenSSL successfully initialized [OpenSSL 1.1.1v  1 Aug 2023]
+2024-06-04 19:24:42,086 INFO - Initializing Spring embedded WebApplicationContext
+2024-06-04 19:24:42,087 INFO - Root WebApplicationContext: initialization completed in 1121 ms
+2024-06-04 19:24:42,940 INFO - Tomcat started on port(s): 8400 (http) with context path ''
+2024-06-04 19:24:45,815 INFO - {dataSource-1} inited
+2024-06-04 19:26:19,633 ERROR - Application run failed
+org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Table 'kaoqin1.courseInfo' doesn't exist
+### The error may exist in file [D:\课堂考勤实训项目\rollcall\target\classes\com\njwuqi\rollcall\mapper\RedisStreamMapper.xml]
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: select courseNumber,courseName,phone,state,addressName,createTime from courseInfo
+### Cause: java.sql.SQLSyntaxErrorException: Table 'kaoqin1.courseInfo' doesn't exist
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Table 'kaoqin1.courseInfo' doesn't exist
+	at org.springframework.jdbc.support.SQLErrorCodeSQLExceptionTranslator.doTranslate(SQLErrorCodeSQLExceptionTranslator.java:239)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:70)
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:73)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:446)
+	at jdk.proxy2/jdk.proxy2.$Proxy72.select(Unknown Source)
+	at org.mybatis.spring.SqlSessionTemplate.select(SqlSessionTemplate.java:254)
+	at org.apache.ibatis.binding.MapperMethod.executeWithResultHandler(MapperMethod.java:128)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:73)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:59)
+	at jdk.proxy2/jdk.proxy2.$Proxy73.queryStreamALLCourseinfo(Unknown Source)
+	at com.njwuqi.rollcall.StreamResultService.StartService.streamQuery(StartService.java:43)
+	at com.njwuqi.rollcall.configuration.ApplicationReadyEventListener.onApplicationEvent(ApplicationReadyEventListener.java:20)
+	at com.njwuqi.rollcall.configuration.ApplicationReadyEventListener.onApplicationEvent(ApplicationReadyEventListener.java:11)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169)
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421)
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378)
+	at org.springframework.boot.context.event.EventPublishingRunListener.running(EventPublishingRunListener.java:111)
+	at org.springframework.boot.SpringApplicationRunListeners.lambda$running$6(SpringApplicationRunListeners.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:117)
+	at org.springframework.boot.SpringApplicationRunListeners.doWithListeners(SpringApplicationRunListeners.java:111)
+	at org.springframework.boot.SpringApplicationRunListeners.running(SpringApplicationRunListeners.java:79)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:353)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1343)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1332)
+	at com.njwuqi.rollcall.MyApplication.main(MyApplication.java:11)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'kaoqin1.courseInfo' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:953)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.execute(ClientPreparedStatement.java:371)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3446)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:434)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3444)
+	at com.alibaba.druid.wall.WallFilter.preparedStatement_execute(WallFilter.java:638)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3444)
+	at com.alibaba.druid.filter.FilterEventAdapter.preparedStatement_execute(FilterEventAdapter.java:434)
+	at com.alibaba.druid.filter.FilterChainImpl.preparedStatement_execute(FilterChainImpl.java:3444)
+	at com.alibaba.druid.proxy.jdbc.PreparedStatementProxyImpl.execute(PreparedStatementProxyImpl.java:152)
+	at com.alibaba.druid.pool.DruidPooledPreparedStatement.execute(DruidPooledPreparedStatement.java:483)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.query(PreparedStatementHandler.java:63)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.query(RoutingStatementHandler.java:79)
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:63)
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:326)
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109)
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:83)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.select(DefaultSqlSession.java:170)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.select(DefaultSqlSession.java:158)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:433)
+	... 24 common frames omitted
+2024-06-04 19:29:11,489 INFO - {dataSource-1} closing ...
+2024-06-04 19:29:11,495 INFO - {dataSource-1} closed

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.CourseinfoMapper">
+    <insert id="insertCourseinfo" parameterType="com.njwuqi.rollcall.entity.Courseinfo" useGeneratedKeys="true" keyProperty="courseNumber">
+        insert into courseInfo(courseName,phone,state,addressName) values(#{courseName},#{phone},#{state},#{addressName})
+    </insert>
+    <delete id="delCourseinfo" parameterType="java.lang.Long">
+        delete from courseInfo where courseNumber = #{courseNumber}
+    </delete>
+    <update id="updateCourseinfo" parameterType="com.njwuqi.rollcall.entity.Courseinfo">
+        update courseInfo set courseName=#{courseName},phone=#{phone},state=#{state},addressName=#{addressName} where courseNumber = #{courseNumber}
+    </update>
+    <select id="queryCourseinfoById" resultType="com.njwuqi.rollcall.entity.Courseinfo">
+        select courseNumber,courseName,phone,state,addressName,createTime from courseInfo where courseNumber = #{courseNumber}
+    </select>
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.StatisticsinfoMapper">
+    <insert id="insertStatisticsinfo" parameterType="com.njwuqi.rollcall.entity.Statisticsinfo">
+        insert into statisticsinfo(date,courseNumber,totalNumber,attendanceNumber,leaveNumber,lateNumber,absentNumber,earlyNumber,ruleNumber,earlyInfos,leaveInfos,lateInfos,absentInfos) values(#{date},#{courseNumber},#{totalNumber},#{attendanceNumber},#{leaveNumber},#{lateNumber},#{absentNumber},#{earlyNumber},#{ruleNumber},#{earlyInfos},#{leaveInfos},#{lateInfos},#{absentInfos})
+    </insert>
+    <delete id="delStatisticsinfo" parameterType="java.lang.Long">
+        delete from statisticsinfo where statisticsNumber = #{statisticsNumber}
+    </delete>
+    <update id="updateStatisticsinfo" parameterType="com.njwuqi.rollcall.entity.Statisticsinfo">
+        update statisticsinfo set date=#{date},courseNumber=#{courseNumber},totalNumber=#{totalNumber},attendanceNumber=#{attendanceNumber},leaveNumber=#{leaveNumber},lateNumber=#{lateNumber},absentNumber=#{absentNumber},earlyNumber=#{earlyNumber},ruleNumber=#{ruleNumber},earlyInfos=#{earlyInfos},leaveInfos=#{leaveInfos},lateInfos=#{lateInfos},absentInfos=#{absentInfos} where statisticsNumber = #{statisticsNumber}
+    </update>
+    <select id="queryStatisticsinfoById" resultType="com.njwuqi.rollcall.entity.Statisticsinfo">
+        select statisticsNumber,date,courseNumber,totalNumber,attendanceNumber,leaveNumber,lateNumber,absentNumber,earlyNumber,ruleNumber,earlyInfos,leaveInfos,lateInfos,absentInfos from statisticsinfo where statisticsNumber = #{statisticsNumber}
+    </select>
+</mapper>

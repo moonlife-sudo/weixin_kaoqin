@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.njwuqi.rollcall.mapper.RecordinfoMapper">
+    <insert id="insertRecordinfo" parameterType="com.njwuqi.rollcall.entity.Recordinfo">
+        insert into recordinfo(starttime,endtime,state1,state2,modifystate,phone,courseNumber,ruleNumber,rulestarttime,ruleendtime) values(#{starttime},#{endtime},#{state1},#{state2},#{modifystate},#{phone},#{courseNumber},#{ruleNumber},#{rulestarttime},#{ruleendtime})
+    </insert>
+    <delete id="delRecordinfo" parameterType="java.lang.Long">
+        delete from recordinfo where recordNumber = #{recordNumber}
+    </delete>
+    <select id="queryRecordinfoById" resultType="com.njwuqi.rollcall.entity.Recordinfo">
+        select recordNumber,starttime,endtime,state1,state2,modifystate,phone,courseNumber,ruleNumber,rulestarttime,ruleendtime from recordinfo where recordNumber = #{recordNumber}
+    </select>
+    <update id="updateRecordinfo" parameterType="com.njwuqi.rollcall.entity.Recordinfo">
+        update recordinfo set starttime=#{starttime},endtime=#{endtime},state1=#{state1},state2=#{state2},modifystate=#{modifystate},phone=#{phone},courseNumber=#{courseNumber},ruleNumber=#{ruleNumber},rulestarttime=#{rulestarttime},ruleendtime=#{ruleendtime} where recordNumber = #{recordNumber}
+    </update>
+</mapper>
