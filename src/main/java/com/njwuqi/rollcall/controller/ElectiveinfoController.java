@@ -21,7 +21,7 @@ public class ElectiveinfoController {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setCode(0);
-            operationResult.setMessage("新增班级学生成功！");
+            operationResult.setMessage("新增班级学生成功！1");
         } else {
             operationResult.setCode(1);
             operationResult.setMessage("新增班级学生失败！");
